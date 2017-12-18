@@ -1,0 +1,2 @@
+Currently testing these JS NN libraries:
+<script src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.4/synaptic.js"></script>
