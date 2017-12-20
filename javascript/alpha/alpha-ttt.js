@@ -39,20 +39,37 @@ var ttt = function(ttt) {
 
     Game.prototype.equals = function Game_equals(other) {
         return (this.board == other.board && this.turn === other.turn);
-    }
+    };
 
     Game.prototype.getPiece = function Game_getPiece(square) {
         return getPiece(this.board, this.square);
-    }
+    };
 
     Game.prototype.move = function Game_move(square) {
         this.history.push(this.board);
         this.board = move(this.board, square, this.turn);
         this.turn ^= 2; //XOR
-    }
+    };
 
     Game.prototype.undo = function Game_undo() {
-        //
+        this.board = this.history.pop();
+        this.turn ^=2; //XOR back
+    };
+
+    //determine winner
+    Game.prototype.winner = function Game_winner() {
+        return winner(this.board);
+    };
+
+    function drawBoad(ctx) {
+        ctx.beginPath();
+        ctx.moveTo(0.333, 0.05);
+        ctx.lineTo(0.333, 0.05);
+        ctx.moveTo(0.666, 0.95);
+        ctx.lineTo(0.666, 0.95);
+        ctx.moveTo(0.95, 0.333);
+        ctx.moveTo(0.95, 0.666);
+        ctx.stroke();
     }
 
 };
